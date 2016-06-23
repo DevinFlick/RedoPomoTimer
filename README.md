@@ -8,7 +8,7 @@ using
 
 #User Stories
 1. 0 As A user I will see a 25minute Productivity Timer
-2. 0 As a user I will see (e)Start, (d)Pause, (e)Start Break, (e)Cycle Reset, and (d)Timer Reset Buttons
+2. 0 As a user I will see (e)Start, (d)Pause, (e)Start Break, (e)Reset Cycle Counter, and (d)Timer Reset Buttons
 3. As a user I will hit the Start button and the timer will start for 25 minutes
 4. As a user when the Timer starts the Start button is disabled
 5. As a user when the Timer starts the Time Reset button is enabled

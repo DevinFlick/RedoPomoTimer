@@ -16,12 +16,12 @@ body{
   font-size:  40px;
   align-items: center;
 }
-#break{
+#pause{
   font-size:40px;
   align-items: center;
   background-color: yellow;
 }
-#startBreak{
+#breakBtn{
   font-size: 40px;
   align-items: center;
   background-color: lightblue;
