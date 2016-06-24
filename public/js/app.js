@@ -7,42 +7,67 @@ $(document).ready(function(){
   var resetTime = $('#resetTime');
   var resetCycle = $('#cycleButton')
   var countdown;
+  var cycleNum = $('#cycleNum');
+  var teapot = document.getElementById('teapot');
 
   start.on('click', startCountdown);
   breakBtn.on('click', startBreak);
   pauseBtn.on('click', pauseCountdown);
   resetTime.on('click', resetProductivityTimer);
+  resetCycle.on('click', resetCycleCounter);
+
+function resetCycleCounter(){
+  cycleNum.text(1);
+  alert('Productivity Cycle Counter Reset!')
+}
 
   function resetProductivityTimer(){
+    resetTime.addClass('disabled');
+    resetTime.attr('disabled', true);
     start.removeClass('disabled');
+    start.removeAttr('disabled');
     clearInterval(countdown);
     minutes.text("25");
     seconds.text("00");
-    resetTime.addClass('disabled');
-  }
+    cycleNum.text(+cycleNum.text() + 1);
+    }
 
   function pauseCountdown(){
     clearInterval(countdown);
     pauseBtn.addClass('disabled');
+    pauseBtn.attr('disabled', true);
     start.removeClass('disabled');
+    start.removeAttr('disabled');
+    resetTime.removeAttr('disabled');
+    resetTime.removeClass('disabled');
   }
 
   function startBreak(){
-    pauseBtn.removeClass('disabled');
-    start.addClass('disabled');
     clearInterval(countdown);
-    minutes.text("05");
-    seconds.text("00");
+    if (+cycleNum.text() >= 4){
+      minutes.text("15");
+      seconds.text("00");
+      cycleNum.text('1');
+    } else {
+      minutes.text("05");
+      seconds.text("00");
+    }
     startCountdown();
   }
   function startCountdown(){
-    pauseBtn.removeClass('disabled');
-    resetTime.removeClass('disabled');
     start.addClass('disabled');
+    start.attr('disabled', true);
+    resetTime.removeAttr('disabled');
+    resetTime.removeClass('disabled');
+    pauseBtn.removeClass('disabled');
+    pauseBtn.removeAttr('disabled');
+    breakBtn.removeClass('disabled');
+    breakBtn.removeAttr('disabled');
     countdown = setInterval(function(){
       var secondsVal = +seconds.text();
       var minutesVal = +minutes.text();
         if (minutesVal === 0 && secondsVal === 0){
+        teapot.play();
         clearInterval(countdown);
         return;
         }
