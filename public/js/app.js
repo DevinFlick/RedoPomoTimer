@@ -8,7 +8,7 @@ $(document).ready(function(){
   var resetCycle = $('#cycleButton')
   var countdown;
   var cycleNum = $('#cycleNum');
-  var teapot = document.getElementById('teapot');
+  var yay = document.getElementById('yay');
 
   start.on('click', startCountdown);
   breakBtn.on('click', startBreak);
@@ -67,8 +67,8 @@ function resetCycleCounter(){
       var secondsVal = +seconds.text();
       var minutesVal = +minutes.text();
         if (minutesVal === 0 && secondsVal === 0){
-        teapot.play();
         clearInterval(countdown);
+        yay.play();
         return;
         }
       if(secondsVal === 0){
